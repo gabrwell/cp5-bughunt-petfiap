@@ -4,6 +4,8 @@ import br.com.fiap.petfiap.exception.AtendimentoNaoEncontradoException;
 import br.com.fiap.petfiap.exception.HorarioOcupadoException;
 import br.com.fiap.petfiap.model.Atendimento;
 import br.com.fiap.petfiap.repository.AtendimentoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.util.List;
 // Regras de agenda do PetFiap: agendar, concluir e cancelar atendimentos.
 @Service
 public class AgendaService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AgendaService.class);
 
     private final AtendimentoRepository repository;
 
@@ -34,8 +38,7 @@ public class AgendaService {
             }
         }
         Atendimento salvo = repository.save(novo);
-        System.out.println("Recibo: atendimento " + salvo.getProtocolo()
-                + " agendado para " + salvo.getPetNome() + " (tutor " + salvo.getTutorNome() + ")");
+        LOGGER.info("Atendimento {} agendado para o pet {}", salvo.getProtocolo(), salvo.getPetNome());
         return salvo;
     }
 
