@@ -2,11 +2,16 @@
 
 ## Identificacao
 
-**Grupo:** PENDENTE - preencher antes da entrega
+**Grupo:** Bug Hunters PetFiap
 
 | Integrante | RM | Turma |
 |---|---|---|
-| PENDENTE | PENDENTE | PENDENTE |
+| Pedro Henrique dos Santos Cardoso | 563268 | Nao informada |
+| Gabriel Gibin Leoncio | 565462 | Nao informada |
+| Rafael do Nascimento Silva | 566263 | Nao informada |
+| Rai Augusto Ribeiro | 562870 | Nao informada |
+| Guilherme Morais de Assis | 564198 | Nao informada |
+| Lucas Werpp Franco | 556044 | Nao informada |
 
 | Campo | Resultado |
 |---|---|
