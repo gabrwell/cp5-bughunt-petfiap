@@ -24,4 +24,16 @@ public class RegrasModeloSemCoberturaTest {
                 () -> assertEquals(80.0, medio.calcularPreco(), 0.001),
                 () -> assertEquals(100.0, grande.calcularPreco(), 0.001));
     }
+
+    @Test
+    public void deveDurar60MinutosNaTosa() {
+        // Arrange
+        Tosa tosa = new Tosa(4, "Rex", "PEQUENO", "Ana", data);
+
+        // Act
+        int duracao = tosa.getDuracaoMinutos();
+
+        // Assert
+        assertEquals(60, duracao);
+    }
 }
