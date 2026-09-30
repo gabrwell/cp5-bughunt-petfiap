@@ -1,5 +1,6 @@
 package br.com.fiap.petfiap.service;
 
+import br.com.fiap.petfiap.exception.StatusInvalidoException;
 import br.com.fiap.petfiap.model.Banho;
 import br.com.fiap.petfiap.model.Atendimento;
 import br.com.fiap.petfiap.repository.AtendimentoRepository;
@@ -16,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.never;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,5 +55,18 @@ public class AgendaServiceRegrasSemCoberturaTest {
         // Assert
         assertEquals("CANCELADO", cancelado.getStatus());
         verify(repository).save(agendado);
+    }
+
+    @Test
+    public void deveRecusarCancelamentoDeAtendimentoConcluido() {
+        // Arrange
+        Banho concluido = new Banho(
+                12, "Rex", "PEQUENO", "Ana", LocalDateTime.now().plusDays(1));
+        concluido.setStatus("CONCLUIDO");
+        when(repository.findById(1L)).thenReturn(Optional.of(concluido));
+
+        // Act + Assert
+        assertThrows(StatusInvalidoException.class, () -> service.cancelar(1L));
+        verify(repository, never()).save(any());
     }
 }
