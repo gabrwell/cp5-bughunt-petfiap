@@ -1,8 +1,8 @@
-# Checkpoint 5 - Bug Hunt PetFiap
+# Checkpoint 5 - Bug Hunt
 
 ## Identificacao
 
-**Grupo:** Bug Hunters PetFiap
+**Grupo:** Bug Hunters Pet
 
 | Integrante | RM | Turma |
 |---|---|---|
