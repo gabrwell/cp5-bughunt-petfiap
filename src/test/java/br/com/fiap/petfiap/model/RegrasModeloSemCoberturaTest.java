@@ -36,4 +36,16 @@ public class RegrasModeloSemCoberturaTest {
         // Assert
         assertEquals(60, duracao);
     }
+
+    @Test
+    public void deveCobrar150ReaisNaConsultaIndependentementeDoPorte() {
+        // Arrange
+        ConsultaVeterinaria pequeno = new ConsultaVeterinaria(5, "Rex", "PEQUENO", "Ana", data);
+        ConsultaVeterinaria grande = new ConsultaVeterinaria(6, "Thor", "GRANDE", "Caio", data);
+
+        // Act + Assert
+        assertAll(
+                () -> assertEquals(150.0, pequeno.calcularPreco(), 0.001),
+                () -> assertEquals(150.0, grande.calcularPreco(), 0.001));
+    }
 }
